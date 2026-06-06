@@ -1,0 +1,41 @@
+# Dependency directories
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+
+# Database
+*.sqlite3
+*.db
+newseye-news-crawler/newseye_dev.db
+newseye-backend/newseye_dev.db
+chroma_db/
+neo4j_data/
+neo4j_logs/
+
+# Large Datasets
+data/raw/*.json
+data/raw/*.csv
+data/processed/*.csv
+!data/processed/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# OS/IDE
+.DS_Store
+.vscode/
+.idea/
+Thumbs.db
+
+# Build
+dist/
+build/
+newseye-frontend/build/
+
+# Fonts
+newseye-backend/app/assets/fonts/*.ttf

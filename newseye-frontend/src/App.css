@@ -1,0 +1,361 @@
+:root {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --text-main: #f8fafc;
+  --text-dim: #94a3b8;
+  --accent-blue: #3b82f6;
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+  --accent-purple: #8b5cf6;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+}
+
+.dashboard {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 1rem 2rem;
+  background-color: var(--card-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #334155;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo h1 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  border: 1px solid #334155;
+}
+
+.stat-info h3 {
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  margin: 0;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.25rem 0 0 0;
+}
+
+.forecast-section {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #334155;
+  margin-bottom: 2rem;
+}
+
+.trend-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 200px;
+  padding-top: 2rem;
+  border-bottom: 2px solid #334155;
+}
+
+.trend-bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.trend-bar {
+  width: 70%;
+  background-color: var(--accent-blue);
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  transition: height 0.3s ease;
+}
+
+.trend-bar.predicted {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--accent-purple),
+    var(--accent-purple) 10px,
+    #7c3aed 10px,
+    #7c3aed 20px
+  );
+}
+
+.trend-bar:hover .tooltip {
+  display: block;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.trend-label {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.news-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.news-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.news-item {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #334155;
+}
+
+.news-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.badge.hacking { background-color: #475569; }
+.badge.phishing { background-color: #ea580c; }
+.badge.malware { background-color: #dc2626; }
+.badge.fraud { background-color: #d97706; }
+.badge.ransomware { background-color: #7c2d12; }
+
+.news-source {
+  color: var(--text-dim);
+  font-size: 0.875rem;
+}
+
+.news-item h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+}
+
+.news-excerpt {
+  color: var(--text-dim);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--accent-blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* High Risk Card Highlighting */
+.news-item.high-risk {
+  border-left: 5px solid var(--accent-red);
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.1);
+  background: linear-gradient(to right, rgba(239, 68, 68, 0.05), var(--card-bg));
+}
+
+.stat-value.high { color: var(--accent-red); text-shadow: 0 0 10px rgba(239, 68, 68, 0.3); }
+.stat-value.medium { color: #f59e0b; }
+.stat-value.low { color: var(--accent-green); }
+
+/* Drill-down Panel */
+.analysis-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
+}
+
+.drill-down-panel {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid #334155;
+  padding: 20px;
+  max-height: 800px;
+  overflow-y: auto;
+}
+
+.drill-down-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #334155;
+}
+
+/* Compact View */
+.news-list.compact {
+  gap: 0.75rem;
+}
+
+.news-item.compact {
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.news-item.compact h3 {
+  font-size: 0.95rem;
+  margin: 0;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.news-item.compact .news-meta {
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.news-item {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 1024px) {
+  .analysis-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .content { padding: 1rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .header { flex-direction: column; gap: 1rem; text-align: center; }
+}
+
+.view-toggle-btn {
+  background-color: #334155;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.2s;
+}
+
+/* Smooth Page Transitions */
+main.content {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.loading-skeleton {
+  animation: pulse 1.5s infinite ease-in-out;
+  background-color: #334155;
+  border-radius: 8px;
+}
+
+/* Nav Button Hover Effects */
+.nav-btn {
+  position: relative;
+  transition: all 0.3s;
+}
+
+.nav-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-blue);
+  box-shadow: 0 0 10px var(--accent-blue);
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
