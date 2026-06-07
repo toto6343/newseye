@@ -42,19 +42,8 @@ NewsEye는 실시간 뉴스 데이터를 수집하여 AI(KoBERT, LLM)로 분석�
 ---
 
 ## 🏗️ 시스템 아키텍처 (Architecture)
+<img width="1693" height="929" alt="Image" src="https://github.com/user-attachments/assets/6165b2cf-ccfd-4577-890d-dd6b709b102b" />
 
-```text
-[뉴스 소스] -> [Python 크롤러] -> [KoBERT/NER 분석] -> [FastAPI 백엔드]
-                                                         |
-                                 ------------------------------------------------
-                                 |               |               |              |
-                          [PostgreSQL]      [Neo4j]        [ChromaDB]      [OSINT APIs]
-                          (메타데이터)      (관계데이터)     (RAG/Vector)     (VT/Abuse)
-                                 |               |               |
-                          ------------------------------------------------
-                                         [React 대시보드]
-                                   (시각화 및 실시간 타겟 알림)
-```
 
 ---
 
